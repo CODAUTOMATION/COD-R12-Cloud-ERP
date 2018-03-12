@@ -139,8 +139,6 @@ public class LoginLogout {
 			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
 			Utility.waitForPageToLoad();
 			Utility.ng_clickWebElement(lnkUserName, "User Name", "UserNameClick");
-			//Utility.ng_waitImplicitly(5);
-			//Utility.ng_clickWebElement(elmSighOut,"Sign Off","SignOffClick");
 			Utility.ng_clickUsingActions(elmSighOut,"Sign Off","SignOffClick");			
 			Utility.clickWarning(btnWarning);					    
 			Utility.ng_clickWebElement(btnLogoutConfirm, "Logout Confirm", "LogoutConfirmClick");
