@@ -1491,5 +1491,43 @@ public class Utility  {
 			} 	
 			return Global.bResult;
 		}
+		/*----------------------------------------------------------------------------
+		Function Name    	: ng_enterTextPwd
+		Description     	: This function enters a data into password text box and in reports it hides the string
+		Input Parameters 	: strObject - Object Name of Edit Box
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table                        
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_enterTextPwd(WebElement element, String strLabel, String strKey) throws Exception {
+			
+			String strVal = getTestDataValue(strKey);				 
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}	
+			try {
+				waitForPageToLoad();
+				//ng_scrollIntoViewElement(element, strLabel);						
+				//clearTextField(element);	
+				if(Global.gstrHighlighter == true) {
+					highLighterMethod(element);
+				}	
+				element.sendKeys(strVal);
+				//waitForPageToLoad();
+				String strDesc = "Successfully entered '" + "****" + "' in '" + strLabel + "' textbox.";
+				writeHTMLResultLog(strDesc, "pass");
+				Global.bResult = "True";
+			} catch (Exception e) {
+				String strDesc = "'" + strLabel + "' textbox does not exist. Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			}
+			return Global.bResult;
+		}
 		
 }

@@ -330,7 +330,329 @@ public class Cloud {
 	public Cloud(Utility util) throws Exception{
 		//this.driver = driver;    	
 		PageFactory.initElements(util.ng_returnDriver(), this);
-	}       
+	}  
+	
+	
+	/*----------------------------------------------------------------------------
+    Function Name    	: createItemBasedRequisition
+    Description     	: This function used to Create item based requisition  
+    Author				:     
+    Date of creation	:
+	Date of modification:
+    ----------------------------------------------------------------------------*/ 
+	public void createItemBasedRequisition() throws Exception {    	
+		if(Global.objErr == "11"){
+			return;
+		}    
+		try {
+			TestData td = new TestData ();
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	        	    
+			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
+
+			Utility.waitForPageToLoad();
+			Utility.ng_clickWebElement(lnkRequisitionLineEntry,"Requisition Line Entry","RequisitionLineEntryClick");
+			//Utility.waitForPageToLoad();
+			Utility.ng_verifyPage("Requisition", "RequisitionCheck");
+			                                                                                                                                //Utility.ng_clickWebElement(elmSearchIcon, "Search Icon", "SearchIconClick");//Utility.ng_selectWindow("WindowSelect");//Utility.waitForPageToLoad(); //Utility.ng_enterText(edtItem, "Item", "ItemSet");                            
+			Global.gstrReadfromTestData = false;
+			Utility.ng_typeAndTab(edtItemNew, "Item", "14493");
+			Global.gstrReadfromTestData = true;
+
+		                                                                                                                                   	//			Utility.ng_clickWebElement(btnSearch, "Search", "SearchClick");			
+			                                                                                                                               //			String strItenVal = (String) Global.objData.get("ItemSet");
+			                                                                                                                              //			if(!strItenVal.contains("SKIP")) {
+			                                                                                                                             //				//Utility.ng_waitImplicitly(3);
+			                                                                                                                            //				Utility.clickItem(strItenVal);
+			                                                                                                                           //			}
+			                                                                                                                          //Utility.ng_clickWebElement(btnSearchOk, "Search Ok", "SearchOkClick");			
+			                                                                                                                         //Utility.ng_SelectList(edtUOM, "UOM","UOMSet");
+			                                                                                                                        //Utility.ng_typeAndTab(edtUOM, "UOM","UOMSet");	
+			Utility.ng_waitImplicitly(1);                                                                                                                       //Utility.ng_SelectList(edtCurrency, "Currency","CurrencySet");
+			Utility.ng_typeAndTab(edtPrice, "Price", "PriceSet");    	                                                          
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickSimply(btnAddtoRequisition, "Add to Requisition", "AddtoRequisitionClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_waitImplicitly(1);	
+			Utility.ng_clickUsingActions(btnEditAndSubmit, "Edit And Submit", "EditAndSubmitClick");
+			Utility.ng_waitImplicitly(2);
+			Utility.waitForPageToLoad();
+			Utility.ng_scrollIntoViewElement(btnSave, "Save");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnSave, "Save", "SaveClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnCheckFunds, "CheckFunds", "CheckFundsClick");
+			Utility.ng_waitImplicitly(2);
+			Utility.ng_clickSimply(btnConfirmationOk, "Confirmation Ok", "ConfirmationOkClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnManageApprovals, "Manage Approvals", "ManageApprovalsClick"); //ng_clickWebElement
+			Utility.ng_waitImplicitly(2);
+			Utility.ng_clickUsingActions(btnSubmit, "Submit", "SubmitClick");	//ng_clickUsingActions
+			Utility.ng_getElementText(elmConfRequisitionNumber, "ConfRequisition Number", "ConfRequisitionNumberGet");
+			
+			String s=elmConfRequisitionNumber.getText();
+			Utility.ng_clickSimply(btnConfOk, "Confirmation Ok", "ConfOk"); 	
+			sStrReqNo=Utility.ng_getDigitsFromString(s);
+		    System.out.println(sStrReqNo);
+		} catch (Exception e) {
+			Global.objErr = "11";
+		}       
+	}
+
+	/*----------------------------------------------------------------------------
+    Function Name    	: createPurchaseOrder
+    Description     	: Create Purchase Order from Requisition 
+    Author				:   
+    Date of creation	:
+	Date of modification: 
+    ----------------------------------------------------------------------------*/ 
+	public void createPurchaseOrder() throws Exception {    	
+		if(Global.objErr == "11"){
+			return;
+		}    
+		try {
+			TestData td = new TestData ();
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	        	    
+			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
+
+			Utility.waitForPageToLoad();
+			Utility.ng_clickWebElement(imgTask, "Task", "TaskClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(lnkProcessRequisitions, "Process Requisitions", "ProcessRequisitionsClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_verifyPage("Process Requisitions", "ProcessRequisitionsCheck");
+			
+			if(sStrReqNo!=null)
+			{
+			Global.gstrReadfromTestData = false;
+			Utility.ng_enterText(edtRequisition, "Requisition", sStrReqNo);
+			System.out.println(sStrReqNo);
+			Global.gstrReadfromTestData = true;
+			}
+			else
+			{
+				Utility.ng_enterText(edtRequisition, "ReqNoTakenFromExcel", "RequisitionSet");	
+			}
+			
+			Utility.clearTextAndTab(edtBuyer, "Buyer", "BuyerSet");
+			Utility.ng_clickSimply(btnSearchRequisition, "Search Requisition", "SearchRequisitionClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickSimply(elmSearchRecordOne, "Search Record One", "SearchRecordOneClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnAddToDocumentBuilder, "Add To Document Builder", "AddToDocumentBuilderClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_typeAndTab(edtSupplier, "Supplier", "SupplierSet");
+			Utility.ng_TypeAndEnter(edtSupplierSite, "Supplier Site", "SupplierSiteSelect");  //ng_SelectList
+			//Utility.waitForPageToLoad();
+			Utility.ng_clickSimply(btnOkAddToDocBuilder, "Ok AddToDocBuilder", "OkAddToDocBuilderClick");
+			Utility.ng_clickWebElement(btnCreate, "Create", "CreateClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_getElementText(elmInfoPurchaseOrder, "Info Purchase Order", "InfoPurchaseOrderGet");
+			String s=elmInfoPurchaseOrder.getText();
+			Utility.ng_clickSimply(btnOkPurchaseOrder, "Ok Purchase Order", "OkPurchaseOrderClick");
+			sStrPoNo=Utility.ng_getDigitsFromString(s);
+			System.out.println(sStrPoNo);
+			Utility.ng_enterText(edtDescription, "Description", "DescriptionSet");
+			Utility.ng_clickWebElement(lnkDistributions, "Distributions", "DistributionsClick");
+			Utility.ng_clickWebElement(btnCheckFundsPurchase, "Check Funds Purchase", "CheckFundsPurchaseClick");
+			Utility.ng_getElementText(elmConfPurchaseOrder, "Conf Purchase Order", "ConfPurchaseOrderGet");
+			Utility.ng_clickSimply(btnOkConfPurchaseOrder, "Ok Conf Purchase Order", "OkConfPurchaseOrderClick");
+			Utility.ng_clickWebElement(btnManageApprovalsPurchaseOrder, "Manage Approvals Purchase Order", "ManageApprovalsPurchaseOrderClick");
+			Utility.ng_clickWebElement(btnCancelPurchaseOrder, "Cancel Purchase Order", "CancelPurchaseOrderClick");
+			Utility.ng_clickWebElement(btnSubmitPurchaseOrder, "Submit Purchase Order", "SubmitPurchaseOrderClick");
+			Utility.ng_getElementText(elmConfPurchaseOrderNumber, "Conf Purchase Order Number", "ConfPurchaseOrderNumberGet");
+			Utility.ng_clickSimply(btnOkPurchaseOrderNumber, "Ok PurchaseOrderNumber", "OkPurchaseOrderNumberClick");
+
+		} catch (Exception e) {
+			Global.objErr = "11";
+		}      
+	}
+
+	
+
+	/*----------------------------------------------------------------------------
+    Function Name    	: createReceivingReceipt
+    Description     	: Create Receiving Receipt
+    ----------------------------------------------------------------------------*/ 
+	public void createReceivingReceipt()
+	{
+		if(Global.objErr == "11"){
+			return;
+		}    
+		try {
+			TestData td = new TestData ();
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	        	    
+			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
+
+			Utility.waitForPageToLoad();	
+			//Global.gstrReadfromTestData = false;
+			//Utility.ng_clickWebElement(imgTask, "Task", "TaskClick");	edtItemsDue  ng_DropDown
+			//edtRequester.clear();
+			Utility.clearTextField(edtRequester);
+			Utility.ng_waitImplicitly(1);
+			Utility.waitForPageToLoad();
+			//Utility.ng_DropDownByIndex(edtItemsDue, "Any Time", "ItemsIndexDueSet");
+			Select se=new Select(edtItemsDue);
+			se.selectByIndex(8);
+			Utility.ng_waitImplicitly(2);
+			//string No=3021953;
+			if(sStrPoNo!=null)
+			{
+				Global.gstrReadfromTestData = false;
+				Utility.ng_enterText(edtPurOrder, "PurchaseOrder", sStrPoNo);
+				 Global.gstrReadfromTestData = true;
+			}
+			else
+			{
+				Utility.ng_enterText(edtPurOrder, "PoNoTakenFromExcel", "PurchaseOrderSet");
+			}	
+			Utility.ng_clickWebElement(btnPOSearch, "Search", "SearchClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_waitImplicitly(2);
+			Utility.ng_clickUsingActions(eleCod, "CodBu", "CodBuClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnReceive, "Receive", "ReceiveClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnReceiptQuantity, "ReceiptQuantity", "ReceiptQuantityClick");
+			Utility.ng_clickWebElement(btnPOSubmit, "POSubmit", "POSubmitClick");  //Any time  btnOk,eleGetConf
+			Utility.ng_getElementText(eleGetConf, "Conf Confirmation", "ConfirmationGet");
+			Utility.ng_clickSimply(btnOk, "OK", "OKClick");
+
+		} catch (Exception e) {
+			Global.objErr = "11";			
+		}   
+	}//edtIdentifyingPO
+
+	/*----------------------------------------------------------------------------
+  Function Name    	: createPurOrderMatchedInvoice
+  Description     	: Create Purchase Order Matched Invoice
+  ----------------------------------------------------------------------------*/ 
+	public void createPurOrderMatchedInvoice()
+	{
+		if(Global.objErr == "11"){
+			return;
+		}    
+		try {
+			TestData td = new TestData ();  
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	        	    
+			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
+
+			Utility.waitForPageToLoad();
+			Utility.ng_clickWebElement(imgTask, "Task", "TaskClick");
+			Utility.ng_clickWebElement(lnkCreateInvoice, "Create Invoice", "CreateInvoiceClick");
+			Utility.ng_verifyPage("Create Invoice", "CreateInvoiceCheck");
+			if(sStrPoNo!=null)
+			{
+			Global.gstrReadfromTestData = false;
+			Utility.ng_typeAndTab(edtIdentifyingPO, "IdentifyingPO", sStrPoNo);
+			Global.gstrReadfromTestData = true;
+			}
+			else
+			{
+				Utility.ng_typeAndTab(edtIdentifyingPO, "PoNoTakenFromExcel", "IdentifyingPOSet");
+			}
+			Utility.ng_waitImplicitly(2);
+			Utility.waitForPageToLoad();
+			
+			//Utility.ng_typeAndTab(edtIdentifyingPO, "IdentifyingPO", "IdentifyingPOSet");
+			//Utility.waitForPageToLoad();
+			//Utility.ng_SelectList(lstBusinessUnit, "Business Unit", "BusinessUnitSelect");
+			//Utility.ng_typeAndTab(edtSupplier, "Supplier", "SupplierSet");
+			//Utility.ng_typeAndTab(edtSupplierSite, "Supplier Site", "SupplierSiteSelect");
+			//Global.gstrReadfromTestData = false;
+			sStrInvcNo ="InvNo"+Utility.ng_RandomNum();
+			Global.gstrReadfromTestData = false;
+			Utility.ng_typeAndTab(edtNumber, "Number", sStrInvcNo);
+			Global.gstrReadfromTestData = true;
+			Utility.ng_typeAndTab(edtAmount, "Amount", "AmountSet"); 
+			Utility.ng_clickWebElement(btnGo, "GoButton", "GoButtonClick");  //btnApply,btnOK, chkMatch
+			Utility.ng_waitImplicitly(2);
+			Utility.ng_clickWebElement(chkMatch, "SelectAllMatch", "MatchClick");
+			                                                                      //Utility.ng_clickWebElement(btnApply, "Apply", "ApplyClick");
+			Utility.ng_clickSimply(btnOK, "OK", "OkClick");
+			                                                                      //Utility.ng_clickWebElement(btnOK, "OKPopUp", "OkClick");
+			                                                                      //Utility.ng_clickWebElement(btnApply, "Apply", "ApplyClick");
+			                                                                       //Utility.ng_clickWebElement(btnOK, "OK", "OkClick");
+			Utility.ng_clickWebElement(btnSaveInvoice, "Save Invoice", "SaveInvoiceClick");
+			Utility.ng_clickWebElement(lstInvoiceActions, "InvoiceActions", "InvoiceActionsClick");
+			Utility.ng_clickElementUsingJS(lstValidate, "Validate", "ValidateClick");
+			//Utility.ng_SelectList(edtDistributionSet, "Distribution Set", "DistributionSet");
+			//Utility.ng_enterText(edtAmountLine, "Amount", "AmountSet");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnSaveAndCloseInvc, "SaveAndClose", "SaveAndCloseInvcClick");
+
+		} catch (Exception e) {
+			Global.objErr = "11";			
+		}   
+	}//edtIdentifyingPO
+	/*----------------------------------------------------------------------------
+    Function Name    	: createPaymentQuickCheck
+    Description     	: createPaymentQC  
+    Author				:
+    Date of creation	:
+	Date of modification:
+    ----------------------------------------------------------------------------*/ 
+	public void createPaymentQuickCheck() throws Exception {    	
+		if(Global.objErr == "11"){
+			return;
+		}    
+		try {
+			TestData td = new TestData ();
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	        	    
+			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
+
+			Utility.waitForPageToLoad();
+			Utility.ng_clickWebElement(imgTask, "Task", "TaskClick");
+			Utility.ng_clickWebElement(lnkCreatePayment, "Create Payment", "CreatePaymentClick");
+			Utility.waitForPageToLoad();
+			Utility.ng_verifyPage("Create Payment", "CreatePaymentCheck");
+			Utility.ng_typeAndTab(lstBusinessUnitPayment, "Business Unit", "BusinessUnitPaymentSelect");  //ng_SelectList
+			Utility.ng_typeAndTab(lstSupplierOrParty, "Supplier or Party", "SupplierOrPartySelect");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_TypeAndEnter(lstSupplierSite, "Supplier Site", "SupplierSiteSelect");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_sendTab(lstSupplierSite, "Supplier Site");
+			//Utility.ng_DropDown(lstType, "Type", "TypeSelect");
+			//Select se=new Select(edtItemsDue);
+			//se.selectByIndex(1);
+			//Utility.ng_enterText(edtDescriptionPayment, "Description Payment", "DescriptionPaymentSet");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_typeAndTab(lstDisbursementBankAccount, "Disbursement Bank Account", "DisbursementBankAccountSelect");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_typeAndTab(lstPaymentMethod, "Payment Method", "PaymentMethodSelect");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_TypeAndEnter(lstPaymentProcessProfile, "Payment Process Profile", "PaymentProcessProfileSelect");
+			Utility.ng_waitImplicitly(3);
+			Utility.ng_typeAndTab(lstPaymentDocument, "Payment Document", "PaymentDocumentSelect");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(imgSelectAndAdd, "Select AndAdd", "SelectAndAddClick");
+			Utility.ng_waitImplicitly(1);
+			/*if(sStrInvcNo!=null)
+			{
+			Global.gstrReadfromTestData = false;
+			Utility.ng_enterText(edtInvoiceNumber, "InvoiceNumberTakenFromExcel", sStrInvcNo);
+			Utility.ng_clickSimply(btnSearchInvoice, "Search Invoice", "SearchInvoiceClick");
+			Global.gstrReadfromTestData = true;
+			}
+			else
+			{
+				Utility.ng_enterText(edtInvoiceNumber, "InvoiceNumberTakenFromExcel", sStrInvcNo);	
+				Utility.ng_clickSimply(btnSearchInvoice, "Search Invoice", "SearchInvoiceClick");
+			}*/
+			Utility.ng_waitImplicitly(3);
+			Utility.ng_clickWebElement(elmRecordInvoiveToPay, "Invoive To Pay Record", "InvoiveToPayRecordClick");
+			//Utility.ng_clickWebElement(btnApplyInvoicetoPay, "Apply Invoice to Pay", "ApplyInvoicetoPayClick");
+			Utility.ng_clickSimply(btnOkInvoicetoPay, "Ok Invoice to Pay", "OkInvoicetoPayClick");
+			Utility.ng_waitImplicitly(1);
+			Utility.ng_clickWebElement(btnSaveAndClose, "Save And Close", "SaveAndCloseClick");
+			Utility.ng_getElementText(elmConfPaymentNum, "Conf Payment Number", "ConfPaymentNumGet");
+			Utility.ng_clickSimply(elmOkConfPayment, "Ok Conf Payment", "OkConfPayment");
+
+		} catch (Exception e) {
+			Global.objErr = "11";
+		}     
+	}
+	
 	/*----------------------------------------------------------------------------
     Function Name    	: createPaymentInvioce
     Description     	: Create Payment Invioce  

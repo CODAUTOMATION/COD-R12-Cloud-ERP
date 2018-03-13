@@ -24,7 +24,7 @@ public class SendReportInEmail {
 	public static void sendGmailReport() throws IOException {
 		final String username = "msuryavanshi@astcorporation.com";		// Sender's email ID needs to be mentioned
 		final String password = "Serene*321";		// Sender's password needs to be mentioned
-		final String usernameTo = "dbhangale@astcorporation.com,nritolia@astcorporation.com,rshinde@astcorporation.com";	// Recipient's email ID needs to be mentioned.
+		final String usernameTo = "dbhangale@astcorporation.com,nritolia@astcorporation.com";	//nritolia@astcorporation.com  Recipient's email ID needs to be mentioned.
 		// setting gmail smtp properties
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -70,7 +70,7 @@ public class SendReportInEmail {
 	public static void sendOutlookReport() throws IOException {
 		final String username = "msuryavanshi@astcorporation.com";		// Sender's email ID needs to be mentioned
 		final String password = "Serene*321";		// Sender's password needs to be mentioned
-		final String usernameTo = "dbhangale@astcorporation.com,nritolia@astcorporation.com,msuryavanshi@astcorporation.com";	// Recipient's email ID needs to be mentioned.
+		final String usernameTo = "msuryavanshi@astcorporation.com,dbhangale@astcorporation.com";	// Recipient's email ID needs to be mentioned.
 		// setting gmail smtp properties
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
