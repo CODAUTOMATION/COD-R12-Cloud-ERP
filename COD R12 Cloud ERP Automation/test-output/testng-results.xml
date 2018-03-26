@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Parallel test suite" duration-ms="367833" started-at="2018-03-13T07:19:46Z" finished-at="2018-03-13T07:25:54Z">
+  <suite name="Parallel test suite" duration-ms="17163" started-at="2018-03-15T10:22:10Z" finished-at="2018-03-15T10:22:27Z">
     <groups>
     </groups>
-    <test name="Chrome Test" duration-ms="367833" started-at="2018-03-13T07:19:46Z" finished-at="2018-03-13T07:25:54Z">
+    <test name="Chrome Test" duration-ms="17163" started-at="2018-03-15T10:22:10Z" finished-at="2018-03-15T10:22:27Z">
       <class name="RunManager.HybridExecuteTest">
-        <test-method status="PASS" signature="runManager(java.lang.String)[pri:0, instance:RunManager.HybridExecuteTest@23d2a7e8]" name="runManager" duration-ms="367779" started-at="2018-03-13T12:49:47Z" finished-at="2018-03-13T12:55:54Z">
+        <test-method status="FAIL" signature="runManager(java.lang.String)[pri:0, instance:RunManager.HybridExecuteTest@23d2a7e8]" name="runManager" duration-ms="16855" started-at="2018-03-15T15:52:10Z" finished-at="2018-03-15T15:52:27Z">
           <params>
             <param index="0">
               <value>
@@ -15,6 +15,11 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerExceptionat lib.Utility.writeHTMLResultLog(Utility.java:408)at RunManager.HybridExecuteTest.runManager(HybridExecuteTest.java:96)at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)at java.lang.reflect.Method.invoke(Unknown Source)at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)at org.testng.internal.Invoker.invokeMethod(Invoker.java:571)at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:707)at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:979)at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)at org.testng.TestRunner.privateRun(TestRunner.java:648)at org.testng.TestRunner.run(TestRunner.java:505)at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)at org.testng.SuiteRunner.run(SuiteRunner.java:364)at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)at org.testng.TestNG.runSuites(TestNG.java:1028)at org.testng.TestNG.run(TestNG.java:996)at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runManager -->

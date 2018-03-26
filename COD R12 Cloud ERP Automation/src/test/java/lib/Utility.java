@@ -1,7 +1,7 @@
 /*============================================================================================
 Library File Name    :  Utility
-Author               :  Sharad Mali
-Created date         :  23-Sep-2017
+Author               :  
+Created date         :  
 Description          :  It lists the common utility functions that can be used in the scripts.
 ============================================================================================*/
 
@@ -67,11 +67,11 @@ public class Utility  {
 			//driver.get("https://smali:mar-2018@adfs.elliemae.com/adfs/ls/wia");
 			//driver.navigate().to(strVal);
 			waitForPageToLoad();
-			String strDesc = "Browser  '" + strVal + "'  Invoked Successfully.";
+			String strDesc = "Browser  '" + strVal + "'  Invoked Successfully";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Throwable error) {
-			String strDesc = "Timeout waiting for Page Load Request to complete.";
+			String strDesc = "Timeout waiting for Page Load Request to complete";
 			writeHTMLResultLog(strDesc, "fail");			
 			takeScreenShotAndLog("fail");
 			Global.bResult = "False";
@@ -98,7 +98,7 @@ public class Utility  {
 		}		
 		try {
 			waitForPageToLoad();			
-			String strDesc = "Page '" + strLabel + "' is displayed successfully.";
+			String strDesc = "Page '" + strLabel + "' is displayed successfully";
 			writeHTMLResultLog(strDesc, "info");
 			takeScreenShotAndLog("pass");
 			Global.bResult = "True";
@@ -149,7 +149,7 @@ public class Utility  {
 			}
 			element.sendKeys(strVal);
 			//waitForPageToLoad();
-			String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox.";
+			String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -178,7 +178,7 @@ public class Utility  {
 			if (strCellData!= null) {
 				return strCellData;
 			}else {
-				String strDesc = "DataValue '" + strKey +  "' not found in Test Data . " ;
+				String strDesc = "DataValue '" + strKey +  "' not found in Test Data" ;
 				writeHTMLResultLog(strDesc, "fail");
 				Global.bResult = "False";
 				Global.objErr = "11";
@@ -240,7 +240,7 @@ public class Utility  {
 			WebElement dropdownselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='"+strVal+"']")));
 			dropdownselect.click();
 			waitForPageToLoad();	
-			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -278,7 +278,7 @@ public class Utility  {
 			
 			Select objSelect = new Select(element);
 			objSelect.selectByVisibleText(strVal);			
-			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -329,7 +329,7 @@ public class Utility  {
 			WebElement dropdownselect=driver.findElement(By.xpath("//div[contains(@id,'dropdownPopup::dropDownContent')]//span[text()='"+strVal+"']"));
 			dropdownselect.click();
 			
-			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -377,7 +377,7 @@ public class Utility  {
 				js.executeScript(onClickScript,element);
 			}	
 			waitForPageToLoad();
-			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";			
+			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";			
 			writeHTMLResultLog(strDesc, "pass");
 			takeScreenShotAndLog("pass");			
 			Global.bResult = "True";
@@ -664,7 +664,7 @@ public class Utility  {
 			builder.moveToElement(element).click().build().perform();	
 			waitForPageToLoad();           
 			
-			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";
+			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";			
 		} catch (Exception e) {
@@ -803,7 +803,7 @@ public class Utility  {
 		    //clearTextField(element);
 		    ng_sendTab(element, strLabel);
 		    //waitForPageToLoad();
-		    String strDesc = "Cleared text for " + strLabel + "' textbox.";
+		    String strDesc = "Cleared text for " + strLabel + "' textbox";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {	
@@ -860,7 +860,7 @@ public class Utility  {
 				highLighterMethod(objElement);
 			}
 			String value = objElement.getText();
-			String strDesc = "Successfully get the text "+ value +" for '" + strLabel + "'  WebElement.";
+			String strDesc = "Successfully get the text "+ value +" for '" + strLabel + "'  WebElement";
 			writeHTMLResultLog(strDesc, "pass");
 			takeScreenShotAndLog("pass");
 			Global.bResult = "True";					
@@ -1008,7 +1008,7 @@ public class Utility  {
 			}
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			waitForPageToLoad();
-			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";
+			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";			
 		} catch (Exception e) {
@@ -1287,7 +1287,7 @@ public class Utility  {
 				Select objSelect = new Select(element);
 				int index=Integer.parseInt(strVal);
 				objSelect.selectByIndex(index);		
-				String strDesc = "Value '" + strLabel + "' is selected successfully from '" + strLabel + "' list.";
+				String strDesc = "Value '" + strLabel + "' is selected successfully from '" + strLabel + "' list";
 				writeHTMLResultLog(strDesc, "pass");
 				Global.bResult = "True";
 			} catch (Exception e) {
