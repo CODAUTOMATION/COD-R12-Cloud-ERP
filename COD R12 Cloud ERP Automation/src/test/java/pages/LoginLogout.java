@@ -61,7 +61,8 @@ public class LoginLogout {
         }
     	try {    	
 			TestData td = new TestData ();
-			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);						
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	
+			Global.test.log(LogStatus.INFO,"Test Execution Started");
 			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);
 			Utility.ng_invokeBrowser("URL");
 		} catch (Exception e) {
@@ -82,7 +83,7 @@ public class LoginLogout {
         }   
     	try {
 			TestData td = new TestData ();
-			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	    			
+			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	 
 			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);    
 			
 			Utility.waitForPageToLoad();
@@ -118,6 +119,7 @@ public class LoginLogout {
 			Utility.ng_clickUsingActions(elmSighOut,"Sign Off","SignOffClick");			
 			Utility.clickWarning(btnWarning);					    
 			Utility.ng_clickWebElement(btnLogoutConfirm, "Logout Confirm", "LogoutConfirmClick");
+			Global.test.log(LogStatus.INFO,"Test Execution Finished");
 			Utility.quitdriver();
 		} catch (Exception e) {
 			Global.objErr = "11";			

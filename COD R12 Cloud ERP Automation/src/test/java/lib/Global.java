@@ -35,7 +35,7 @@ public class Global {
     public static Boolean gstrReadfromTestData = true;  //true : TestData,   false : Variable
     
     //Email Configuraion
-    public static Boolean gstrSendEmail = true;			//true : send email, false : won't send
+    public static Boolean gstrSendEmail = false;			//true : send email, false : won't send
 	public static String gstrEmailMode = "outlook";		//outlook , gmail
        
 }

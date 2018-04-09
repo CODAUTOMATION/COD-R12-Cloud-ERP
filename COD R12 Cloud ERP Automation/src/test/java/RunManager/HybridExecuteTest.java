@@ -53,7 +53,7 @@ public class HybridExecuteTest  {
                 	Utility util = new Utility(browser);
                 	//Read Batch
                 	String strBatchQuery = "Select * from BatchSheet where BatchTestFile='"+ strBatchName +"'";
-                	List<String> arrBatchList = InitScript.readBatchData(Global.gstrBatchFilesDir + "COD R12 Cloud ERP Common Functins Action.xlsx",strBatchQuery);   
+                	List<String> arrBatchList = InitScript.readBatchData(Global.gstrBatchFilesDir + "COD R12 Cloud ERP Common Functions Action.xlsx",strBatchQuery);   
                 	for(String strComponentName : arrBatchList) {
                 		Global.gstrComponentName = strComponentName;
                 		if (Global.gstrComponentName != "") {

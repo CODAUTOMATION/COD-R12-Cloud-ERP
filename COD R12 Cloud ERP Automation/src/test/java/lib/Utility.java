@@ -27,14 +27,34 @@ import java.util.Properties;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Utility.
+ */
 public class Utility  {
+	
+	/** The driver. */
 	static WebDriver driver;
+	
+	/** The cc. */
 	static Calendar cc = null;
+	
+	/** The home path. */
 	public static String homePath = "";
+	
+	/** The wait. */
 	public static WebDriverWait wait;
+	
+	/** The js. */
 	public static JavascriptExecutor js;
     
 	
+	/**
+	 * Instantiates a new utility.
+	 *
+	 * @param browser the browser
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public Utility(String browser ) throws IOException {
 		InitDriver initdriver =InitDriver.getInstance(browser);
 		
@@ -43,10 +63,23 @@ public class Utility  {
 		this.js = (JavascriptExecutor) this.driver;
 	}
 	
+	/**
+	 * Ng return driver.
+	 *
+	 * @return the web driver
+	 * @throws Exception the exception
+	 */
 	public static WebDriver ng_returnDriver() throws Exception {
 		return driver;
 	}
 	
+	/**
+	 * Ng invoke browser.
+	 *
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: invokeBrowser
 	Description     	: This function invokes the application in Browser
@@ -81,6 +114,14 @@ public class Utility  {
 
 	}
 
+	/**
+	 * Ng verify page.
+	 *
+	 * @param strLabel the str label
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: verifyPage
 	Description     	: This function enters a data into a text box
@@ -112,6 +153,15 @@ public class Utility  {
 		return Global.bResult;
 	}
 
+	/**
+	 * Ng enter text.
+	 *
+	 * @param element the element
+	 * @param strLabel the str label
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: enterText
 	Description     	: This function enters a data into a text box
@@ -161,6 +211,14 @@ public class Utility  {
 		}
 		return Global.bResult;
 	}
+	
+	/**
+	 * Gets the test data value.
+	 *
+	 * @param strKey the str key
+	 * @return the test data value
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: getTestDataValue
 	Description     	: This function get the TestDataValue
@@ -192,6 +250,15 @@ public class Utility  {
 		return strCellData;
 	}
 
+	/**
+	 * Ng select list.
+	 *
+	 * @param element the element
+	 * @param strLabel the str label
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: ng_SelectList
 	Description     	: 
@@ -253,6 +320,15 @@ public class Utility  {
 		return Global.bResult;
 	}
 	
+	/**
+	 * Ng drop down.
+	 *
+	 * @param element the element
+	 * @param strLabel the str label
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: ng_DropDown
 	Description     	: 
@@ -291,6 +367,15 @@ public class Utility  {
 		return Global.bResult;
 	}
 	
+	/**
+	 * Ng select listtable.
+	 *
+	 * @param element the element
+	 * @param strLabel the str label
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: ng_SelectListtable
 	Description     	: 
@@ -342,6 +427,15 @@ public class Utility  {
 		return Global.bResult;
 	}
 	
+	/**
+	 * Ng click web element.
+	 *
+	 * @param element the element
+	 * @param strLabel the str label
+	 * @param strKey the str key
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: clickWebElement
 	Description     	: This function clicks the WebElement object
@@ -391,6 +485,13 @@ public class Utility  {
 		return Global.bResult;
 	}
 
+	/**
+	 * Write HTML result log.
+	 *
+	 * @param strDescription the str description
+	 * @param strPassFail the str pass fail
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name       :writeHTMLResultLog
 	Description         :This function will create the test Log File
@@ -411,6 +512,12 @@ public class Utility  {
 		}
 	}
 
+	/**
+	 * Take screen shot and log.
+	 *
+	 * @param strPassFail the str pass fail
+	 * @throws Exception the exception
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name       :TakeScreenShot
 	Description         :This function takes the screen shot of the application
@@ -445,6 +552,12 @@ public class Utility  {
 		}
 	}
 
+	/**
+	 * Gets the current daten time.
+	 *
+	 * @param format the format
+	 * @return the current daten time
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: getCurrentDatenTime
 	Description     	: Function to get Current Date and Time
@@ -461,6 +574,13 @@ public class Utility  {
 		return sdf.format(cal.getTime());
 	}
 
+	/**
+	 * Gets the object.
+	 *
+	 * @param key the key
+	 * @return the object
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	/*----------------------------------------------------------------------------
 	Function Name    	: getObject
 	Description     	: Find element BY using object type and value
@@ -519,6 +639,9 @@ public class Utility  {
 	Date of creation	:
 	Date of modification:
 	----------------------------------------------------------------------------*/
+	/**
+	 * Wait for page to load.
+	 */
 	// Wait 
     public static void waitForPageToLoad() {    	
     	 // Wait for Javascript to load
@@ -553,6 +676,14 @@ public class Utility  {
 	Date of modification:
 	----------------------------------------------------------------------------*/
     
+    /**
+     * Ng get text box value.
+     *
+     * @param element the element
+     * @param elementDescription the element description
+     * @return the string
+     * @throws Exception the exception
+     */
     public static String ng_getTextBoxValue(WebElement element, String elementDescription) throws Exception {
         String attValue = "";
         ng_scrollIntoViewElement(element, elementDescription);
@@ -562,6 +693,13 @@ public class Utility  {
         return attValue;	  
   	}
     
+    /**
+     * Ng scroll into view element.
+     *
+     * @param element the element
+     * @param elementDescription the element description
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
 	Function Name    	: ng_scrollIntoViewElement
 	Description     	: 
@@ -583,6 +721,11 @@ public class Utility  {
 		}
 	}
     
+    /**
+     * Clear text field.
+     *
+     * @param element the element
+     */
     /*----------------------------------------------------------------------------
 	Function Name    	: clearTextField
 	Description     	: 
@@ -598,6 +741,11 @@ public class Utility  {
 		clearTextFieldMulLines(element);
 	}
     
+    /**
+     * Clear text field mul lines.
+     *
+     * @param element the element
+     */
     /*----------------------------------------------------------------------------
 	Function Name    	: clearTextFieldMulLines
 	Description     	: 
@@ -623,6 +771,11 @@ public class Utility  {
 	Date of modification:
 	----------------------------------------------------------------------------*/
   
+    /**
+     * Ng wait implicitly.
+     *
+     * @param time the time
+     */
     public static void ng_waitImplicitly(int time) {
 		long startTime = 0;
 		long endTime = 0;
@@ -637,6 +790,15 @@ public class Utility  {
 		endTime = System.currentTimeMillis();		
 	}
     
+    /**
+     * Ng click using actions.
+     *
+     * @param element the element
+     * @param strLabel the str label
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
 	Function Name    	: ng_clickUsingActions
 	Description     	: Method clicks on a specific element using actions.
@@ -677,6 +839,13 @@ public class Utility  {
 		return Global.bResult;		
 	}
     
+    /**
+     * Ng select window.
+     *
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
   	Function Name    	: ng_selectWindow
   	Description     	: Selects a particular Window on the basis of the parameters passed.
@@ -714,6 +883,14 @@ public class Utility  {
 		return strVal;
 	}
     
+    /**
+     * Ng select frame.
+     *
+     * @param element the element
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
   	Function Name    	: ng_selectFrame
   	Description     	: Selects a particular Frame on the basis of the parameters passed.
@@ -750,6 +927,15 @@ public class Utility  {
 		return strVal;
 	}
     
+    /**
+     * Ng type and tab.
+     *
+     * @param element the element
+     * @param strLabel the str label
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
   	Function Name    	: ng_typeAndTab
   	Description     	: ng_typeAndTab
@@ -777,6 +963,15 @@ public class Utility  {
 		return Global.bResult;
 	}
     
+    /**
+     * Clear text and tab.
+     *
+     * @param element the element
+     * @param strLabel the str label
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
   	Function Name    	: clearTextAndTab
   	Description     	: clearTextAndTab
@@ -817,6 +1012,12 @@ public class Utility  {
 	}
     
     
+    /**
+     * Ng send tab.
+     *
+     * @param ele the ele
+     * @param description the description
+     */
     /*----------------------------------------------------------------------------
   	Function Name    	: ng_sendTab
   	Description     	: ng_typeAndTab
@@ -835,6 +1036,15 @@ public class Utility  {
 		}		
 	}
     
+    /**
+     * Ng get element text.
+     *
+     * @param element the element
+     * @param strLabel the str label
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
   	Function Name    	: ng_getElementText
   	Description     	: ng_getElementText
@@ -874,6 +1084,12 @@ public class Utility  {
 		return Global.bResult;
 	}
 
+    /**
+     * Explicit wait.
+     *
+     * @param elementID the element ID
+     * @param timeout the timeout
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: explicitWait
    	Description     	: explicit Wait
@@ -916,6 +1132,12 @@ public class Utility  {
 		}
 	}
     
+    /**
+     * Gets the by from web element.
+     *
+     * @param elementID the element ID
+     * @return the by from web element
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: getByFromWebElement
    	Description     	: get By From WebElement
@@ -979,10 +1201,25 @@ public class Utility  {
 		return byLocator;
 	}
     
+    /**
+     * Gets the name from object ID.
+     *
+     * @param elementID the element ID
+     * @return the name from object ID
+     */
     public static String getNameFromObjectID(WebElement elementID) {
 		return elementID.toString().split("->")[1].trim();
 	}
     
+    /**
+     * Ng click element using JS.
+     *
+     * @param element the element
+     * @param strLabel the str label
+     * @param strKey the str key
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: ng_clickElementUsingJS
    	Description     	: Method clicks on a specific element using JS.
@@ -1021,6 +1258,13 @@ public class Utility  {
 		return Global.bResult;	
 	}
     
+    /**
+     * Click item.
+     *
+     * @param strItenVal the str iten val
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: clickItem
    	Description     	: clickItem - Application Utility
@@ -1056,6 +1300,12 @@ public class Utility  {
 		return Global.bResult;
 	}
     
+    /**
+     * Logout finally.
+     *
+     * @return the string
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: logoutFinally
    	Description     	: logoutFinally
@@ -1102,6 +1352,11 @@ public class Utility  {
 		return Global.bResult;	
 	}
     
+    /**
+     * High lighter method.
+     *
+     * @param element the element
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: highLighterMethod
    	Description     	: highLighterMethod
@@ -1116,6 +1371,12 @@ public class Utility  {
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
 	}
     
+    /**
+     * Click warning.
+     *
+     * @param element the element
+     * @throws Exception the exception
+     */
     /*----------------------------------------------------------------------------
    	Function Name    	: clickWarning
    	Description     	: clickWarning
@@ -1141,6 +1402,10 @@ public class Utility  {
 		}
 		
 	}
+	
+	/**
+	 * Quitdriver.
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: quitdriver
    	Description     	: quitdriver
@@ -1154,6 +1419,12 @@ public class Utility  {
 		driver.quit();
 	}
     
+	/**
+	 * Ng wait for element enabled.
+	 *
+	 * @param ele the ele
+	 * @param sTime the s time
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: ng_waitForElementEnabled
    	Description     	: Wait until element is enabled for particular number of seconds
@@ -1173,6 +1444,12 @@ public class Utility  {
 		}
 	}
 	
+	/**
+	 * Ng wait until element displayed.
+	 *
+	 * @param ele the ele
+	 * @param sTime the s time
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: ng_waitUntilElementDisplayed
    	Description     	: Wait until element is displayed for particular number of seconds
@@ -1192,6 +1469,12 @@ public class Utility  {
 		}
 	}
 	
+	/**
+	 * Ng wait until element visible.
+	 *
+	 * @param ele the ele
+	 * @param sTime the s time
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: ng_waitUntilElementVisible
    	Description     	: Wait until element is Visible for particular number of seconds
@@ -1205,6 +1488,13 @@ public class Utility  {
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
 	
+	/**
+	 * Ng random alpha num.
+	 *
+	 * @param strChar the str char
+	 * @param length the length
+	 * @return the string
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: ng_waitUntilElementVisible
    	Description     	: Wait until element is Visible for particular number of seconds
@@ -1229,6 +1519,11 @@ public class Utility  {
 	}
 
 
+	/**
+	 * Ng random num.
+	 *
+	 * @return the int
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: ng_waitUntilElementVisible
    	Description     	: Wait until element is Visible for particular number of seconds
@@ -1245,6 +1540,13 @@ public class Utility  {
 
 		return a;
 	}
+	
+	/**
+	 * Ng get digits from string.
+	 *
+	 * @param strValue the str value
+	 * @return the string
+	 */
 	/*----------------------------------------------------------------------------
    	Function Name    	: getDigitsFromString
    	Description     	: Wait until element is Visible for particular number of seconds
@@ -1264,7 +1566,17 @@ public class Utility  {
          }
          return digits;
      }
-	 /*----------------------------------------------------------------------------
+	 
+ 	/**
+ 	 * Ng drop down by index.
+ 	 *
+ 	 * @param element the element
+ 	 * @param strLabel the str label
+ 	 * @param strKey the str key
+ 	 * @return the string
+ 	 * @throws Exception the exception
+ 	 */
+ 	/*----------------------------------------------------------------------------
 		Function Name    	: ng_DropDownByIndex
 		Description     	: 
 		Input Parameters 	: strObject - Object Name of Edit Box
@@ -1301,6 +1613,15 @@ public class Utility  {
 		}
 		
 		
+		/**
+		 * Ng click ok.
+		 *
+		 * @param element the element
+		 * @param strLabel the str label
+		 * @param strKey the str key
+		 * @return the string
+		 * @throws Exception the exception
+		 */
 		/*----------------------------------------------------------------------------
 		Function Name    	: clickWebElement
 		Description     	: This function clicks the WebElement object
@@ -1342,6 +1663,15 @@ public class Utility  {
 		}
 			
 		
+		/**
+		 * Ng get element text pop up.
+		 *
+		 * @param element the element
+		 * @param strLabel the str label
+		 * @param strKey the str key
+		 * @return the string
+		 * @throws Exception the exception
+		 */
 		/*----------------------------------------------------------------------------
 	  	Function Name    	: ng_getElementText_PopUp
 	  	Description     	: ng_getElementText
@@ -1383,7 +1713,16 @@ public class Utility  {
 			return Global.bResult;
 		}
 	    
-	    /*----------------------------------------------------------------------------
+	    /**
+    	 * Ng click simply.
+    	 *
+    	 * @param element the element
+    	 * @param strLabel the str label
+    	 * @param strKey the str key
+    	 * @return the string
+    	 * @throws Exception the exception
+    	 */
+    	/*----------------------------------------------------------------------------
 		Function Name    	: ng_clickSimply
 		Description     	: This function clicks the WebElement object
 		Input Parameters 	: strObject - Object Name of Web Element
@@ -1406,7 +1745,7 @@ public class Utility  {
 				}			
 				element.click();	
 				Utility.waitForPageToLoad();
-				String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";			
+				String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";			
 				Utility.writeHTMLResultLog(strDesc, "pass");
 				Utility.takeScreenShotAndLog("pass");			
 				Global.bResult = "True";
@@ -1419,6 +1758,16 @@ public class Utility  {
 			} 								
 			return Global.bResult;
 		}
+		
+		/**
+		 * Ng enter text direct.
+		 *
+		 * @param element the element
+		 * @param strLabel the str label
+		 * @param strKey the str key
+		 * @return the string
+		 * @throws Exception the exception
+		 */
 		/*----------------------------------------------------------------------------
 		Function Name    	: ng_enterTextDirect
 		Description     	: This function enters a data into a text box
@@ -1445,7 +1794,7 @@ public class Utility  {
 				}	
 				element.sendKeys(strVal);
 				//waitForPageToLoad();
-				String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox.";
+				String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox";
 				writeHTMLResultLog(strDesc, "pass");
 				Global.bResult = "True";
 			} catch (Exception e) {
@@ -1458,6 +1807,15 @@ public class Utility  {
 			return Global.bResult;
 		}
 		
+		/**
+		 * Ng type and enter.
+		 *
+		 * @param element the element
+		 * @param strLabel the str label
+		 * @param strKey the str key
+		 * @return the string
+		 * @throws Exception the exception
+		 */
 		/*----------------------------------------------------------------------------
 		Function Name    	: ng_SelectListDirect
 		Description     	: 
@@ -1479,7 +1837,7 @@ public class Utility  {
 				ng_waitImplicitly(1);  
 				element.sendKeys(Keys.ENTER);
 				waitForPageToLoad();	
-				String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+				String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 				writeHTMLResultLog(strDesc, "pass");
 				Global.bResult = "True";
 			} catch (Exception e) {
@@ -1491,6 +1849,16 @@ public class Utility  {
 			} 	
 			return Global.bResult;
 		}
+		
+		/**
+		 * Ng enter text pwd.
+		 *
+		 * @param element the element
+		 * @param strLabel the str label
+		 * @param strKey the str key
+		 * @return the string
+		 * @throws Exception the exception
+		 */
 		/*----------------------------------------------------------------------------
 		Function Name    	: ng_enterTextPwd
 		Description     	: This function enters a data into password text box and in reports it hides the string
@@ -1517,7 +1885,7 @@ public class Utility  {
 				}	
 				element.sendKeys(strVal);
 				//waitForPageToLoad();
-				String strDesc = "Successfully entered '" + "****" + "' in '" + strLabel + "' textbox.";
+				String strDesc = "Successfully entered '" + "****" + "' in '" + strLabel + "' textbox";
 				writeHTMLResultLog(strDesc, "pass");
 				Global.bResult = "True";
 			} catch (Exception e) {
@@ -1529,5 +1897,99 @@ public class Utility  {
 			}
 			return Global.bResult;
 		}
+		
+		/**
+		 * Ng assert value.
+		 *
+		 * @param strActual the str actual
+		 * @param strKey the str key
+		 * @return the string
+		 * @throws Exception the exception
+		 */
+		/*----------------------------------------------------------------------------
+		Function Name    	: ng_assertValue
+		Description     	: It comapares the actual and expected  result
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+	public static String ng_assertValue(String strActual, String strKey) throws Exception {
+		String strVal = getTestDataValue(strKey);                                                               
+		if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+			return String.valueOf(true);
+		}
+		try {                                        
+			if(strActual.equalsIgnoreCase(strVal)) {
+				String strDesc = "Successfully verified value : Expected "+ " '"+strActual+"' " +"     Actual     '" + strVal+"'";
+				writeHTMLResultLog(strDesc, "pass");
+				takeScreenShotAndLog("pass");
+				Global.bResult = "True";
+			} else {
+				String strDesc = "Failed to verify actual qauntity value : "+ strActual +" with expected qauntity value '" + strVal;
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			}
+		} catch (Exception e) {
+			String strDesc = "Failed to verify actual qauntity value : "+ strActual +" with expected qauntity value '" + strVal;
+			writeHTMLResultLog(strDesc, "fail");
+			takeScreenShotAndLog("fail");
+			Global.bResult = "False";
+			Global.objErr = "11";
+		}                              
+		return Global.bResult;
+	}
+	/*----------------------------------------------------------------------------
+        Function Name                 : ng_assertValue_ByContains
+        Description         : ng_assertValue_ByContains
+        Input Parameters             : 
+        Return Value      : 
+        Author                          : 
+        Date of creation                :
+        Date of modification:
+        ----------------------------------------------------------------------------*/	
+
+	/**
+	 * Ng assert value by contains.
+	 *
+	 * @param strExpected the str expected
+	 * @param strActual the str actual
+	 * @param strKey the str key
+	 * @param label the label
+	 * @return the string
+	 * @throws Exception the exception
+	 */
+	public static String ng_assertValue_ByContains(String strExpected,String strActual, String strKey ,String label) throws Exception {
+		String strVal = getTestDataValue(strKey);                                                               
+		if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+			return String.valueOf(true);
+		}
+		try {        
+
+			if(strExpected.contains("\\.")) {
+				int iLen = strActual.length();
+				strExpected = strExpected.substring(0, iLen);
+			}
+			if(strExpected.contains(strActual)) {
+				String strDesc = "Successfully verified " + label +" value : Expected "+ "'"+strExpected+"'" +"  Actual '" + strActual +"'";
+				writeHTMLResultLog(strDesc, "pass");
+				takeScreenShotAndLog("pass");
+				Global.bResult = "True";
+			} else {
+				String strDesc = "Failed to verify " + label +" value : Expected "+ "'"+strExpected+"'" +"  Actual '" + strActual +"'";
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			}
+		} catch (Exception e) {
+			String strDesc = "Failed to verify " + label +" value : Expected "+ "'"+strExpected+"'" +"  Actual '" + strActual +"'";
+			writeHTMLResultLog(strDesc, "fail");
+			takeScreenShotAndLog("fail");
+			Global.bResult = "False";
+			Global.objErr = "11";
+		}                              
+		return Global.bResult;
+	}
 		
 }

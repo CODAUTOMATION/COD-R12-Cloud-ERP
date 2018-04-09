@@ -26,7 +26,8 @@ public class Cloud {
 	public static String sStrReqNo;
 	public static String sStrInvcNo;
 	//WebDriver driver;
-
+    
+	//createItemBasedRequisition
 	@FindBy(xpath="//a[text()='Requisition Line Entry']")
 	WebElement lnkRequisitionLineEntry;
 	@FindBy(xpath="//a[contains(@title,'Search: Item')]")
@@ -61,6 +62,8 @@ public class Cloud {
 	WebElement btnSavenClose;
 	@FindBy(xpath="//span[text()='Check Funds']")
 	WebElement btnCheckFunds;
+	@FindBy(xpath="//td[text()='The transaction passed the funds check process.']")
+	WebElement getCheckFundsMsg;
 	@FindBy(xpath="//button[text()='OK']//parent::td/child::button[2][text()='OK']")
 	WebElement btnConfirmationOk;
 	@FindBy(xpath="//span[text()='Manage Approvals']")
@@ -74,6 +77,7 @@ public class Cloud {
 	@FindBy(xpath="//span[contains(text(),'K')]//parent::button//parent::td/child::button[2]/child::span")
 	WebElement btnConfOk;
 
+	//createPurchaseOrder
 	@FindBy(xpath="//img[@alt='Tasks']")
 	WebElement imgTask;
 	@FindBy(xpath="//a[text()='Process Requisitions']")
@@ -138,7 +142,7 @@ public class Cloud {
 	@FindBy(xpath="//div[contains(text(),'was submitted')]//following::table[1]//tbody/child::tr//preceding-sibling::td//button[text()='OK']")
 	WebElement btnOkPurchaseOrderNumber;
 
-
+	//createPaymentInvioce
 	@FindBy(xpath="//a[text()='Create Invoice']")
 	WebElement lnkCreateInvoice;
 	@FindBy(xpath="//label[text()='Business Unit']//parent::td//following::input[1]")
@@ -154,6 +158,7 @@ public class Cloud {
 	@FindBy(xpath="//a[@title='Search: Identifying PO']//preceding-sibling::img//preceding-sibling::input")
 	WebElement edtIdentifyingPO;
 
+	//createInvioce
 	@FindBy(xpath="//a[contains(text(),'Create Transaction')]")
 	WebElement btnCreateTransaction;
 	@FindBy(xpath="//label[text()='Transaction Source']//parent::td//following::input[1]")
@@ -175,20 +180,15 @@ public class Cloud {
 	@FindBy(xpath="//span[contains(text(),'Memo Line')]/parent::div/following::div/table[@summary='Invoice Lines']//td[4]//td[1]//input[1]")
 	WebElement lstMemoLine;
 	@FindBy(xpath="//span[contains(text(),'Quantity')]/parent::div/following::div/table[@summary='Invoice Lines']//td[4]//td[3]//input[1]")
-	WebElement edtQuantity;
-
-	//@FindBy(xpath="//span[contains(text(),'Unit Price')]/parent::div/following::div/table[@summary='Invoice Lines']//td[4]//td[4]//input[1]")       
+	WebElement edtQuantity;       
 	@FindBy(xpath="//input[contains(@id,'table1:0:sellingPrice::content')]")
 	WebElement edtUnitPrice;
-
-
 	@FindBy(xpath="//div[contains(text(),'has been saved')]")
 	WebElement elmConfTransactionRefNum;
 	@FindBy(xpath="//div[contains(text(),'has been saved')]//following::table[1]//tbody/child::tr//preceding-sibling::td//button[text()='OK']")
 	WebElement btnOkTransaction;
 
-
-
+	//createPaymentInvioce
 	@FindBy(xpath="//a[contains(text(),'Create Payment')]")
 	WebElement lnkCreatePayment;
 	@FindBy(xpath="//label[text()='Business Unit']//parent::td//following::input[1]")
@@ -290,7 +290,9 @@ public class Cloud {
 	@FindBy(xpath="//label[contains(text(),'Requester')]//preceding-sibling::input")
 	WebElement edtRequester; 
 	@FindBy(xpath="//button[text()='Search']")
-	WebElement btnPOSearch; 
+	WebElement btnPOSearch;
+	@FindBy(xpath="//table/tbody/tr[1]/td[2]/div/table/tbody/tr/td[11]//a")
+	WebElement elePONo;
 	@FindBy(xpath="//button[contains(text(),'Receive')]")
 	WebElement btnReceive; 
 	@FindBy(xpath="//table/tbody/tr[1]/td[2]/div/table/tbody/tr/td[2]")
@@ -380,7 +382,10 @@ public class Cloud {
 			Utility.ng_waitImplicitly(1);
 			Utility.ng_clickWebElement(btnSave, "Save", "SaveClick");
 			Utility.ng_waitImplicitly(1);
-			Utility.ng_clickWebElement(btnCheckFunds, "CheckFunds", "CheckFundsClick");
+			Utility.ng_clickWebElement(btnCheckFunds, "CheckFunds", "CheckFundsClick");//getCheckFundsMsg
+			Utility.ng_getElementText(getCheckFundsMsg, "CheckFunds", "CheckFundsMsgGet");
+			String MSG=getCheckFundsMsg.getText();
+			Utility.ng_assertValue(MSG,"CheckFundsMsgGet");
 			Utility.ng_waitImplicitly(2);
 			Utility.ng_clickSimply(btnConfirmationOk, "Confirmation Ok", "ConfirmationOkClick");
 			Utility.ng_waitImplicitly(1);
@@ -508,6 +513,20 @@ public class Cloud {
 			Utility.ng_clickWebElement(btnPOSearch, "Search", "SearchClick");
 			Utility.waitForPageToLoad();
 			Utility.ng_waitImplicitly(2);
+			
+			Utility.ng_getElementText(elePONo, "PurchaseOrderNo", "PurchaseOrderNoGet");
+			String MSG=elePONo.getText();
+			if(sStrPoNo!=null)
+			{
+				Global.gstrReadfromTestData = false;
+				Utility.ng_assertValue(MSG,sStrPoNo);
+				 Global.gstrReadfromTestData = true;
+			}
+			else
+			{
+				Utility.ng_assertValue(MSG,"PurchaseOrderSet");;
+			}	
+			
 			Utility.ng_clickUsingActions(eleCod, "CodBu", "CodBuClick");
 			Utility.ng_waitImplicitly(1);
 			Utility.ng_clickWebElement(btnReceive, "Receive", "ReceiveClick");
